@@ -1,1 +1,1 @@
-# GSO_Hopverkefni
+# GSO_Hopverkefni #It's pretty noice
