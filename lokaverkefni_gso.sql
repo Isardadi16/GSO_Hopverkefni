@@ -20,7 +20,11 @@ create table lag(
 ID varchar (11) primary key,
 nafn varchar(50),
 lengd varchar(10),
+<<<<<<< HEAD
 lyrics longtext,
+=======
+lyrics 
+>>>>>>> f2c2c9bcb4af89131a611ad8dd3d01e66761ba24
 hof_ID varchar (50),
 dis_ID varchar (50),
 flyt_ID varchar(50),
@@ -921,7 +925,10 @@ No, woman, no cry.'),
 
 
 ('Could you be loved','00:04:28',
+<<<<<<< HEAD
 
+=======
+>>>>>>> f2c2c9bcb4af89131a611ad8dd3d01e66761ba24
 'Could you be love and be loved?
 Could you be love and be loved?
 
@@ -1306,7 +1313,10 @@ create table flytjandi(
 ID varchar (11) primary key,
 nafn varchar(250),
 faedingardagur varchar(50),
+<<<<<<< HEAD
 danardagur varchar (50),
+=======
+>>>>>>> f2c2c9bcb4af89131a611ad8dd3d01e66761ba24
 hof_ID varchar(50),
 dis_ID varchar(50), 
 flokk_ID varchar(50),
@@ -1318,7 +1328,11 @@ foreign key (flokk_ID) references flokk(ID)
 insert into flytjandi
 (ID,nafn,faedingardagur)
 values
+<<<<<<< HEAD
 ('Bob Marley','04.06.1945','11.05.1981'),
+=======
+('Bob Marley','04.06.1945'),
+>>>>>>> f2c2c9bcb4af89131a611ad8dd3d01e66761ba24
 ('Andre Benjamin','05.27.1975'),
 ('Marshall Mathhers','10.17.1972'),
 ('Sarah Maclachlan','01.28.1968'),
