@@ -3,7 +3,7 @@ CREATE database 1009002970_lokaverkefni;
 use 1009002970_lokaverkefni;
 
 create table hofundur(
-ID varchar (11) primary key auto_increment,
+ID integer auto_increment primary key,
 nafn varchar(50),
 heimilisfang varchar (50)
 );
@@ -16,15 +16,100 @@ values('Bob Marley',0),
 ('Sarah Maclachlan','Vancouver, Canada'),
 ('George ´Joji´ Miller','Brooklyn, New York');
 
+create table flokk(
+ID integer auto_increment primary key,
+nafn varchar (255),
+fjoldi int
+);
+
+insert into flokk
+(nafn)
+values
+('solo'),
+('band'),
+('duet');
+
+create table utgefandi(
+ID integer auto_increment primary key,
+nafn varchar(11),
+heimilisfang varchar(255),
+simi varchar(255)
+);
+
+insert into utgefandi
+(nafn,heimilisfang,simi)
+values
+('Marshall Mathers', 'Rochester Hills, Detroit','Ekki fáanlegt'),
+('iTunes/Satire Records','Næsta Apple-búð','1–800–854–3680'),
+('Blue Mountain Music TV', 'Bedford House, 8b Berkeley Gardens','+44 (0) 207 229 3000');
+
+
+
+create table tegund(
+ID integer auto_increment primary key,
+nafn varchar(50),
+lengd varchar(10)
+);
+
+insert into tegund
+(nafn)
+values
+('Raggae'),
+('Rap'),
+('Acoustic'),
+('Hip-hop'),
+('Satire');
+
+
+create table diskur(
+ID  primary key,
+nafn varchar(50),
+utgafudagur varchar(10),
+utgefandi_ID varchar (50),
+tegund_ID varchar (50),
+foreign key (utgefandi_ID) references utgefandi(ID),
+foreign key (tegund_ID) references tegund(ID)
+);
+
+insert into diskur
+(nafn,utgafudagur)
+values
+('Pink Season','01.04.2017'),
+('Rastaman Vibration','04.30.1977'),
+('Fumbling Towards Ecstasy','22.10.1993'),
+('StanKonia','31.10.2000'),
+('The Marshall Mathers LP 2','11.05.2013'),
+('8 Mile Soundtrack','01.04.2017');
+
+
+create table flytjandi(
+ID integer auto_increment primary key,
+nafn varchar(250),
+faedingardagur varchar(50),
+danardagur varchar (50),
+hof_ID varchar(50),
+dis_ID varchar(50), 
+flokk_ID varchar(50),
+Foreign key (hof_ID) references hofundur(ID),
+Foreign key (dis_id) references diskur(ID),
+foreign key (flokk_ID) references flokk(ID)
+);
+
+insert into flytjandi
+(nafn,faedingardagur)
+values
+('Bob Marley','04.06.1945','11.05.1981'),
+('Andre Benjamin','05.27.1975',0),
+('Marshall Mathhers','10.17.1972',0),
+('Sarah Maclachlan','01.28.1968',0),
+('George ´Joji´ Miller','18.09.1992',0);
+
+
 create table lag(
 ID varchar (11) primary key,
 nafn varchar(50),
 lengd varchar(10),
-<<<<<<< HEAD
 lyrics longtext,
-=======
-lyrics 
->>>>>>> f2c2c9bcb4af89131a611ad8dd3d01e66761ba24
 hof_ID varchar (50),
 dis_ID varchar (50),
 flyt_ID varchar(50),
@@ -34,7 +119,7 @@ Foreign key (flyt_ID) references flytjandi(ID)
 );
 
 insert into lag
-(ID,nafn,lengd)
+(nafn,lengd)
 values('Buffalo Soldier','00:02:41','Buffalo Soldier, Dreadlock Rasta:
 There was a Buffalo Soldier in the heart of America,
 Stolen from Africa, brought to America,
@@ -1279,7 +1364,7 @@ With women with big breasts
 I don´t have sex with men
 ´Cause if I did that would make me gay
 (Yeah)
-Please stop calling me gay
+Please stop calling me gays
 Please stop calling me gay
 You are hurting my feelings
 Please stop calling me gay
@@ -1309,94 +1394,3 @@ So please stop calling me gay');
 
 
 
-create table flytjandi(
-ID varchar (11) primary key,
-nafn varchar(250),
-faedingardagur varchar(50),
-<<<<<<< HEAD
-danardagur varchar (50),
-=======
->>>>>>> f2c2c9bcb4af89131a611ad8dd3d01e66761ba24
-hof_ID varchar(50),
-dis_ID varchar(50), 
-flokk_ID varchar(50),
-Foreign key (hof_ID) references hofundur(ID),
-Foreign key (dis_id) references diskur(ID),
-foreign key (flokk_ID) references flokk(ID)
-);
-
-insert into flytjandi
-(ID,nafn,faedingardagur)
-values
-<<<<<<< HEAD
-('Bob Marley','04.06.1945','11.05.1981'),
-=======
-('Bob Marley','04.06.1945'),
->>>>>>> f2c2c9bcb4af89131a611ad8dd3d01e66761ba24
-('Andre Benjamin','05.27.1975'),
-('Marshall Mathhers','10.17.1972'),
-('Sarah Maclachlan','01.28.1968'),
-('George ´Joji´ Miller','18.09.1992');
-
-
-create table flokk(
-ID varchar (11) primary key,
-nafn varchar (255),
-fjoldi int
-);
-
-insert into flokk
-(ID,nafn)
-values
-('solo'),
-('band'),
-('duet');
-
-create table utgefandi(
-ID varchar (11) primary key,
-nafn varchar(11),
-heimilisfang varchar(255),
-simi varchar(255)
-);
-
-insert into utgefandi
-(ID,nafn,heimilisfang,simi)
-values
-('Marshall Mathers', 'Rochester Hills, Detroit','Ekki fáanlegt'),
-('iTunes/Satire Records','Næsta Apple-búð','1–800–854–3680'),
-('Blue Mountain Music TV', 'Bedford House, 8b Berkeley Gardens','+44 (0) 207 229 3000');
-
-create table diskur(
-ID varchar (11) primary key,
-nafn varchar(50),
-utgafudagur varchar(10),
-utgefandi_ID varchar (50),
-tegund_ID varchar (50),
-foreign key (utgefandi_ID) references utgefandi(ID),
-foreign key (tegund_ID) references tegund(ID)
-);
-
-insert into diskur
-(ID,nafn,utgafudagur,utgefandi_ID,tegund_ID)
-values
-('Pink Season','01.04.2017'),
-('Rastaman Vibration','04.30.1977'),
-('Fumbling Towards Ecstasy','22.10.1993'),
-('StanKonia','31.10.2000'),
-('The Marshall Mathers LP 2','11.05.2013'),
-('8 Mile Soundtrack','01.04.2017');
-
-create table tegund(
-ID varchar (11) primary key,
-nafn varchar(50),
-lengd varchar(10)
-);
-
-insert into tegund
-(ID,nafn)
-values
-('Raggae'),
-('Rap'),
-('Acoustic'),
-('Hip-hop'),
-('Satire');
